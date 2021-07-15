@@ -9,3 +9,26 @@ First, make sure you have the following installed on your machine:
 - [PowerShell 7.1](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.1) or later. You can check what is installed with pwsh --version. PowerShell is easy to install or update via dotnet tool install --global PowerShell or dotnet tool install --global PowerShell, respectively.
 
 Also, you need an Azure subscription, to allocate and deploy the required resources.
+
+## Testing and Debugging
+
+For testing or debugging scenarios, there is support for emulation mode that eliminates the need for using an actual Event Hubs resource.
+
+Since communication is "simulated in memory", this makes sense only for a single node. Also, it does not guarantee reliable execution.
+
+The emulation mode can be selected by using a "pseudo-connection-string" instead of a real Event Hubs connection string:
+
+| String | Interpretation |
+| - | - |
+| Memory | simulate both the queues and the partition states in memory | 
+| MemoryF | simulate the queues in memory, but store the partition states in Azure Storage |
+
+Example:
+```json
+{
+  "EventHubsConnection": "Memory",
+}
+```
+
+## References
+https://microsoft.github.io/durabletask-netherite/#/README
