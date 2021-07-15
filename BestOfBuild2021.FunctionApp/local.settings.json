@@ -1,7 +1,9 @@
 {
   "IsEncrypted": false,
   "Values": {
-    "AzureWebJobsStorage": "UseDevelopmentStorage=true",    
+    "AzureWebJobsSecretStorageType": "Files",
+    "AzureWebJobsStorage": "Should be ignored because we have the environment variable set",
+    "SQLDB_Connection": "Should be ignored because we have the environment variable set",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet"
   }
 }
